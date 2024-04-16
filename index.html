@@ -10,6 +10,7 @@
         <script>
             let playerSelection = prompt("Please select rock, paper, or scissors.", "");
             let cleanedPlayerSelection = playerSelection.toLowerCase();
+            console.log(cleanedPlayerSelection);
 
              function getComputerChoice () {
                 let ranNum = Math.floor(Math.random() * 3) + 1;
@@ -26,7 +27,22 @@
                 }
              }
 
+             const computerSelection = getComputerChoice();
+             console.log(computerSelection);
 
+             function playRound(cleanedPlayerSelection, computerSelection) {
+                if (cleanedPlayerSelection === computerSelection) {
+                    return "You tie!";
+                }
+                    else if (cleanedPlayerSelection === "rock" && computerSelection === "scissors" || cleanedPlayerSelection === "paper" && computerSelection === "rock" || cleanedPlayerSelection === "scissors" && computerSelection === "paper") {
+                        return "You win!";
+                    }
+                    else if (cleanedPlayerSelection === "rock" && computerSelection === "paper" || cleanedPlayerSelection === "paper" && computerSelection === "scissors" || cleanedPlayerSelection === "scissors" && computerSelection === "rock") {
+                        return "You lose!";
+                    }
+                }
+
+             console.log(playRound(cleanedPlayerSelection, computerSelection));
 
         </script>
     </body>
