@@ -6,7 +6,11 @@
         <script src = "index.js"></script>
     </head>
     <body>
+
         <script>
+            let playerSelection = prompt("Please select rock, paper, or scissors.", "");
+            let cleanedPlayerSelection = playerSelection.toLowerCase();
+
              function getComputerChoice () {
                 let ranNum = Math.floor(Math.random() * 3) + 1;
                 switch(ranNum) {
@@ -21,7 +25,9 @@
                         break;
                 }
              }
-            console.log(getComputerChoice());
+
+
+
         </script>
     </body>
 </html>
