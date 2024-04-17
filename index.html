@@ -8,11 +8,17 @@
     <body>
 
         <script>
-            let playerSelection = prompt("Please select rock, paper, or scissors.", "");
-            let cleanedPlayerSelection = playerSelection.toLowerCase();
-            console.log(cleanedPlayerSelection);
+            // gets player's selection
+            function getPlayerChoice() {
+                let getPlayerSelection = prompt("Please select rock, paper, or scissors.", "");
+                let playerSelection = getPlayerSelection.toLowerCase();
+                return playerSelection
+            }
+            let playerSelection = getPlayerChoice();
 
-             function getComputerChoice () {
+
+            // gets computer's selection
+             function getComputerChoice() {
                 let ranNum = Math.floor(Math.random() * 3) + 1;
                 switch(ranNum) {
                     case 1:
@@ -26,23 +32,35 @@
                         break;
                 }
              }
+             let computerSelection = getComputerChoice();
 
-             const computerSelection = getComputerChoice();
-             console.log(computerSelection);
 
-             function playRound(cleanedPlayerSelection, computerSelection) {
-                if (cleanedPlayerSelection === computerSelection) {
+             // computes a round of the game
+             function playRound(playerSelection, computerSelection) {
+                if (playerSelection === computerSelection) {
                     return "You tie!";
                 }
-                    else if (cleanedPlayerSelection === "rock" && computerSelection === "scissors" || cleanedPlayerSelection === "paper" && computerSelection === "rock" || cleanedPlayerSelection === "scissors" && computerSelection === "paper") {
+                    else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
                         return "You win!";
                     }
-                    else if (cleanedPlayerSelection === "rock" && computerSelection === "paper" || cleanedPlayerSelection === "paper" && computerSelection === "scissors" || cleanedPlayerSelection === "scissors" && computerSelection === "rock") {
+                    else if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
                         return "You lose!";
                     }
                 }
 
-             console.log(playRound(cleanedPlayerSelection, computerSelection));
+                let game = playRound(playerSelection, computerSelection);
+
+
+                // tests to determine the proper outputs
+                console.log("The player chooses " + playerSelection);
+                console.log("The computer chooses " + computerSelection);
+                console.log(game);
+
+
+                // computes the game
+                
+
+
 
         </script>
     </body>
