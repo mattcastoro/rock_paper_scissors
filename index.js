@@ -48,15 +48,15 @@ function playGame() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
-        let match = playRound(playerSelection, computerSelection);
+        let round = playRound(playerSelection, computerSelection);
         // console.log(`player chooses ${playerSelection}`)
         // console.log(`computer chooses ${computerSelection}`)
 
-        if (match === "You win!") {
+        if (round === "You win!") {
             playerScore += 1;
             // console.log(`player: ${playerScore}, computer: ${computerScore}`);
         }
-        else if (match === "You lose!") {
+        else if (round === "You lose!") {
             computerScore += 1;
             // console.log(`player: ${playerScore}, computer: ${computerScore}`);
         }
