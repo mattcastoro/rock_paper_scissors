@@ -29,11 +29,15 @@ function playRound(playerSelection, computerSelection) {
         // console.log("LOG: You tie!");
         return "You tie!";
     }
-    else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
+    else if (playerSelection === "rock" && computerSelection === "scissors" || 
+        playerSelection === "paper" && computerSelection === "rock" || 
+        playerSelection === "scissors" && computerSelection === "paper") {
         // console.log("LOG: You win!");
         return "You win!";
     }
-    else if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
+    else if (playerSelection === "rock" && computerSelection === "paper" || 
+        playerSelection === "paper" && computerSelection === "scissors" || 
+        playerSelection === "scissors" && computerSelection === "rock") {
         // console.log("LOG: You lose!");
         return "You lose!";
     }
@@ -49,19 +53,19 @@ function playGame() {
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
         let round = playRound(playerSelection, computerSelection);
-        // console.log(`player chooses ${playerSelection}`)
-        // console.log(`computer chooses ${computerSelection}`)
+        console.log(`player chooses ${playerSelection}`)
+        console.log(`computer chooses ${computerSelection}`)
 
         if (round === "You win!") {
             playerScore += 1;
-            // console.log(`player: ${playerScore}, computer: ${computerScore}`);
+            console.log(`player: ${playerScore}, computer: ${computerScore}`);
         }
         else if (round === "You lose!") {
             computerScore += 1;
-            // console.log(`player: ${playerScore}, computer: ${computerScore}`);
+            console.log(`player: ${playerScore}, computer: ${computerScore}`);
         }
         else {
-            // console.log(`player: ${playerScore}, computer: ${computerScore}`)
+            console.log(`player: ${playerScore}, computer: ${computerScore}`)
         }
     }
 
