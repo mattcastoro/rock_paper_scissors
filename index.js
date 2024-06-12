@@ -1,9 +1,9 @@
 // gets player's selection //
-function getPlayerChoice() {
-    let playerSelection = prompt("Please select rock, paper, or scissors.", "");
-    playerSelection = playerSelection.toLowerCase();
-    return playerSelection
-}
+// function getPlayerChoice() {
+//     let playerSelection = prompt("Please select rock, paper, or scissors.", "");
+//     playerSelection = playerSelection.toLowerCase();
+//     return playerSelection
+// }
 
 
 // gets computer's selection //
@@ -23,59 +23,72 @@ function getComputerChoice() {
 }
 
 
+// listens for player's selection/click //
+const btnRock = document.querySelector("#btnRock");
+const btnPaper = document.querySelector("#btnPaper");
+const btnScissors = document.querySelector("#btnScissors");
+
+btnRock.addEventListener('click', () => {
+    playRound("rock",getComputerChoice());
+});
+btnPaper.addEventListener('click', () => {
+    playRound("paper",getComputerChoice());
+});
+btnScissors.addEventListener('click', () => {
+    playRound("scissors", getComputerChoice());
+});
+
+
 // computes a round of the game //
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        // console.log("LOG: You tie!");
-        return "You tie!";
+        updateScore("You tie!");
     }
     else if (playerSelection === "rock" && computerSelection === "scissors" || 
         playerSelection === "paper" && computerSelection === "rock" || 
         playerSelection === "scissors" && computerSelection === "paper") {
-        // console.log("LOG: You win!");
-        return "You win!";
+        updateScore("You win!") ;
     }
     else if (playerSelection === "rock" && computerSelection === "paper" || 
         playerSelection === "paper" && computerSelection === "scissors" || 
         playerSelection === "scissors" && computerSelection === "rock") {
-        // console.log("LOG: You lose!");
-        return "You lose!";
+        updateScore("You lose!");
     }
 }
 
+// updates the score of the game //
+let playerScore = 0;
+let computerScore = 0;
 
-// computes the complete game //
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        let round = playRound(playerSelection, computerSelection);
-        console.log(`player chooses ${playerSelection}`)
-        console.log(`computer chooses ${computerSelection}`)
-
-        if (round === "You win!") {
-            playerScore += 1;
-            console.log(`player: ${playerScore}, computer: ${computerScore}`);
+function updateScore(round) {    
+    if (round === "You win!") {
+        playerScore += 1;
+        const roundWinner = document.querySelector("a");
+        roundWinner.textContent = "You win the round!";
+        const currentScore = document.querySelector("p");
+        currentScore.textContent = `Player's Score: ${playerScore}, Computer's Score: ${computerScore}`;
+    }
+    else if (round === "You lose!") {
+        computerScore += 1;
+        const roundWinner = document.querySelector("a");
+        roundWinner.textContent = "Computer wins the round!"; 
+        const currentScore = document.querySelector("p");
+        currentScore.textContent = `Player's Score: ${playerScore}, Computer's Score: ${computerScore}`;
         }
-        else if (round === "You lose!") {
-            computerScore += 1;
-            console.log(`player: ${playerScore}, computer: ${computerScore}`);
-        }
-        else {
-            console.log(`player: ${playerScore}, computer: ${computerScore}`)
-        }
+    else {
+        const roundWinner = document.querySelector("a");
+        roundWinner.textContent = "Tie, boo who!";
+        const currentScore = document.querySelector("p");
+        currentScore.textContent = `Player's Score: ${playerScore}, Computer's Score: ${computerScore}`;
     }
 
-    if (playerScore > computerScore) {
-        console.log("You win the game!");
-    } else if (computerScore > playerScore) {
-        console.log("You lose the game!");
-    } else {
-        console.log("After 5 rounds it looks like you tied...whomp whomp!");
+    if (playerScore == 5) {
+        const playerWins = document.querySelector("h1");
+        playerWins.textContent = "Player wins the game!";
+    } else if (computerScore == 5) {
+        const computerWins = document.querySelector("h1");
+        computerWins.textContent = "Computer wins the game!";
     }
 }
 
-playGame();
+// playGame();
