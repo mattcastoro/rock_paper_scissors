@@ -1,11 +1,3 @@
-// gets player's selection //
-// function getPlayerChoice() {
-//     let playerSelection = prompt("Please select rock, paper, or scissors.", "");
-//     playerSelection = playerSelection.toLowerCase();
-//     return playerSelection
-// }
-
-
 // gets computer's selection //
 function getComputerChoice() {
     let ranNum = Math.floor(Math.random() * 3) + 1;
@@ -23,7 +15,7 @@ function getComputerChoice() {
 }
 
 
-// listens for player's selection/click //
+// listens for player's selection/clicks //
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissors = document.querySelector("#btnScissors");
@@ -56,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// updates the score of the game //
+// updates the score of the game and displays results within the UI//
 let playerScore = 0;
 let computerScore = 0;
 
@@ -90,5 +82,3 @@ function updateScore(round) {
         computerWins.textContent = "Computer wins the game!";
     }
 }
-
-// playGame();
